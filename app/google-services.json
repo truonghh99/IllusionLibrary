@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "854406227287",
+    "project_id": "illusionlibrary-acfc5",
+    "storage_bucket": "illusionlibrary-acfc5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854406227287:android:496079853eb144b529ca12",
+        "android_client_info": {
+          "package_name": "com.example.illusionlibrary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854406227287-lf6k3addpcle5fo91tuaffuvnlene88n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNJp3kxhFFrdjulFCMC0oXxLqaIycA29o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854406227287-lf6k3addpcle5fo91tuaffuvnlene88n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

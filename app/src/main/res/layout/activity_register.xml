@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/beige"
+    android:background="@color/background"
     android:foregroundTint="#FFFFFF"
     tools:context="LoginActivity">
 
     <TextView
-        android:id="@+id/etAppName"
+        android:id="@+id/tvAppName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:ems="10"
         android:fontFamily="sans-serif"
         android:gravity="center_horizontal"
@@ -23,23 +23,13 @@
         android:textSize="36sp"
         android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/ivAvatar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_below="@id/etAppName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        tools:srcCompat="@tools:sample/avatars" />
-
     <EditText
         android:id="@+id/etName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ivAvatar"
+        android:layout_below="@id/tvAppName"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="60dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="textEmailAddress" />
@@ -110,7 +100,8 @@
             android:text="Sign in here!"
             android:textAlignment="viewStart"
             android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp" />
 
     </RelativeLayout>
 

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff1e6"
+    android:background="@color/background"
     android:foregroundTint="#FFFFFF"
     tools:context="LoginActivity">
 
