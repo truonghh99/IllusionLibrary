@@ -43,45 +43,31 @@
         android:hint="Password"
         android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etPassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"
-        android:background="@color/colorPrimary"
-        android:text="Log In" />
 
     <RelativeLayout
         android:id="@+id/rlSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnLogin"
+        android:layout_below="@+id/etPassword"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="36dp">
 
-        <TextView
-            android:id="@+id/tvSignUpDescription"
+        <Button
+            android:id="@+id/btnLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:text="New to Illusion Library?"
-            android:textColor="@color/black" />
+            android:background="@color/colorPrimary"
+            android:text="Log In" />
 
-        <TextView
-            android:id="@+id/tvSignUp"
+        <Button
+            android:id="@+id/btnSignup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@+id/tvSignUpDescription"
-            android:fontFamily="sans-serif"
-            android:gravity="start"
-            android:text="Sign up here!"
-            android:textAlignment="viewStart"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold" />
+            android:background="@color/colorPrimary"
+            android:text="Sign Up"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/btnLogin" />
+
 
     </RelativeLayout>
 
