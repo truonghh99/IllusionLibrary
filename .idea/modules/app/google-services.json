@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "148067689908",
+    "project_id": "illusionlibrary-466ab",
+    "storage_bucket": "illusionlibrary-466ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148067689908:android:c4242232650ed83e043ee1",
+        "android_client_info": {
+          "package_name": "com.example.illusionlibrary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148067689908-msci3trmie8aensrrbrkv4fprs4q0eap.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.illusionlibrary",
+            "certificate_hash": "a897863cc9af76dc0ea13e8ffbe7c5b81eb26584"
+          }
+        },
+        {
+          "client_id": "148067689908-dnl96i1c71f8phlc45ncbflk0rhugc7u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk9k2ufH5Emu-ZQfVrNoElGf2HsrhinNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148067689908-dnl96i1c71f8phlc45ncbflk0rhugc7u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
