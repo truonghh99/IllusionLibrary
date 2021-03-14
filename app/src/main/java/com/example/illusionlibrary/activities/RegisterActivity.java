@@ -1,8 +1,10 @@
-package com.example.illusionlibrary;
+package com.example.illusionlibrary.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.illusionlibrary.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
