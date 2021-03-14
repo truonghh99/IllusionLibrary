@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-
             case R.id.miLogout:
                 mAuth.signOut();
                 goToLogin();
