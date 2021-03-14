@@ -61,7 +61,7 @@ public class LibraryFragment extends Fragment {
         // Set up adapter & recycler view
         rvLibrary = fragmentLibraryBinding.rvLibrary;
         adapter = new ImageAdapter(getActivity(), images);
-        rvLibrary.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        rvLibrary.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         rvLibrary.setAdapter(adapter);
 
         return fragmentLibraryBinding.getRoot();
