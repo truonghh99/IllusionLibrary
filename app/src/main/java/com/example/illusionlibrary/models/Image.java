@@ -12,4 +12,8 @@ public class Image {
         this.imageName = name;
         this.imageLink = link;
     }
+
+    public String getImageName() {
+        return imageName;
+    }
 }

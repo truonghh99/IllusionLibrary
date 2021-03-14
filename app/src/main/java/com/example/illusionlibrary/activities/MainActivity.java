@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import com.example.illusionlibrary.R;
 import com.example.illusionlibrary.activities.LoginActivity;
 import com.example.illusionlibrary.database.HandleImage;
+import com.example.illusionlibrary.databinding.ActivityMainBinding;
 import com.example.illusionlibrary.fragments.HistoryFragment;
 import com.example.illusionlibrary.fragments.LibraryFragment;
 import com.example.illusionlibrary.fragments.ProfileFragment;
@@ -38,14 +39,15 @@ public class MainActivity extends AppCompatActivity {
 
     public static BottomNavigationView bottomNavigation;
     private static FragmentManager fragmentManager;
+    private ActivityMainBinding activityMainBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(activityMainBinding.getRoot());
         mAuth = FirebaseAuth.getInstance();
 
-        HandleImage.readImage("1");
         bottomNavigation = findViewById(R.id.bottomNavigation);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
