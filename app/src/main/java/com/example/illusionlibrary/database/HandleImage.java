@@ -23,18 +23,4 @@ public class HandleImage {
         mDatabase.child("image").child(id).setValue(image);
     }
 
-    public static void readImage(String id) {
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("image").child(id).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-                }
-                else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                }
-            }
-        });
-    }
 }

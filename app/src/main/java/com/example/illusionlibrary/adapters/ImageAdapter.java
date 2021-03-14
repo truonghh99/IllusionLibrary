@@ -58,9 +58,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private CardView cvProduct;
         private TextView tvName;
-        private TextView tvQuantity;
         private ImageView ivImage;
 
         public ViewHolder(@NonNull ItemImageBinding itemProductBinding) {

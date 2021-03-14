@@ -3,12 +3,20 @@ package com.example.illusionlibrary.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.illusionlibrary.R;
+import com.example.illusionlibrary.adapters.ImageAdapter;
+import com.example.illusionlibrary.databinding.FragmentLibraryBinding;
+import com.example.illusionlibrary.models.Image;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +25,9 @@ import com.example.illusionlibrary.R;
  */
 public class LibraryFragment extends Fragment {
 
+    private List<Image> images;
+    private RecyclerView rvLibrary;
+    private ImageAdapter adapter;
     public LibraryFragment() {
     }
 
@@ -33,6 +44,17 @@ public class LibraryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_library, container, false);
+
+        FragmentLibraryBinding fragmentLibraryBinding = FragmentLibraryBinding.inflate(getLayoutInflater());
+
+        Image.getAllImages();
+        Log.d("COUNT", String.valueOf(Image.images.size()));
+        // Set up adapter & recycler view
+        rvLibrary = fragmentLibraryBinding.rvLibrary;
+        adapter = new ImageAdapter(getActivity(), Image.images);
+        rvLibrary.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        rvLibrary.setAdapter(adapter);
+
+        return fragmentLibraryBinding.getRoot();
     }
 }
