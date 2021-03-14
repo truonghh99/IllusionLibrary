@@ -16,6 +16,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.illusionlibrary.databinding.ItemImageBinding;
 import com.example.illusionlibrary.models.Image;
 
@@ -69,6 +72,10 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
 
         public void bind(final Image image) {
             tvName.setText(image.getImageName());
+            Glide.with(context)
+                    .load(image.imageLink.replaceAll("http:", "https:"))
+                    .apply(RequestOptions.bitmapTransform(new RoundedCorners(50)))
+                    .into(ivImage);
         }
     }
 
