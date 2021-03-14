@@ -13,13 +13,18 @@ import android.view.MenuItem;
 
 import com.example.illusionlibrary.R;
 import com.example.illusionlibrary.activities.LoginActivity;
+import com.example.illusionlibrary.fragments.HistoryFragment;
 import com.example.illusionlibrary.fragments.LibraryFragment;
+import com.example.illusionlibrary.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
     final Fragment libraryFragment = LibraryFragment.newInstance();
+    final Fragment historyFragment = HistoryFragment.newInstance();
+    final Fragment profileFragment = ProfileFragment.newInstance();
+
 
     private Toolbar toolbar;
     private FirebaseAuth mAuth;
@@ -72,6 +77,12 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         Fragment fragment = null;
                         switch (item.getItemId()) {
+                            case R.id.miHistory:
+                                fragment = historyFragment;
+                                break;
+                            case R.id.miProfile:
+                                fragment = profileFragment;
+                                break;
                             case R.id.miLibrary:
                                 fragment = libraryFragment;
                                 break;
