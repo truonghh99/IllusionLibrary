@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,23 +69,25 @@ public class LibraryFragment extends Fragment {
     }
 
     public void getAllImages() {
+        final int numImages = 2;
         DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("image").child("1").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public synchronized void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
+        for (int i = 1; i <= numImages; ++i) {
+            mDatabase.child("image").child(String.valueOf(i)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public synchronized void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (!task.isSuccessful()) {
+                        Log.e("firebase", "Error getting data", task.getException());
+                    } else {
+                        Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                        Map<String, String> td = (HashMap<String, String>) task.getResult().getValue();
+                        Image image = new Image(td.get("imageName"),td.get("imageLink"));
+                        images.add(image);
+                        adapter.notifyDataSetChanged();
+                        Log.e(TAG, String.valueOf(images.size()));
+                    }
                 }
-                else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                    Map<String,String> td=(HashMap<String, String>)task.getResult().getValue();
-                    Image image = new Image(td.get("imageName"),td.get("imageLink"));
-                    images.add(image);
-                    adapter.notifyDataSetChanged();
-                    Log.e(TAG, String.valueOf(images.size()));
-                }
-            }
-        });
+            });
+        }
     }
 }
