@@ -74,7 +74,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
             tvName.setText(image.getImageName());
             Glide.with(context)
                     .load(image.imageLink.replaceAll("http:", "https:"))
-                    .override(400, 200)
+                    .override(1000, 500)
                     .apply(RequestOptions.bitmapTransform(new RoundedCorners(50)))
                     .into(ivImage);
         }

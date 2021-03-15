@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -62,7 +63,7 @@ public class LibraryFragment extends Fragment {
         // Set up adapter & recycler view
         rvLibrary = fragmentLibraryBinding.rvLibrary;
         adapter = new ImageAdapter(getActivity(), images);
-        rvLibrary.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        rvLibrary.setLayoutManager(new LinearLayoutManager(getContext()));
         rvLibrary.setAdapter(adapter);
 
         return fragmentLibraryBinding.getRoot();
