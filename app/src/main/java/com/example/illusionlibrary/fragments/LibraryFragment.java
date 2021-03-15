@@ -71,9 +71,11 @@ public class LibraryFragment extends Fragment {
 
     public void getAllImages() {
         final int numImages = 2;
+        if (images.size() == numImages) return;
+
         DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        for (int i = 1; i <= numImages; ++i) {
+        for (int i = images.size() + 1; i <= numImages; ++i) {
             mDatabase.child("image").child(String.valueOf(i)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                 @Override
                 public synchronized void onComplete(@NonNull Task<DataSnapshot> task) {
