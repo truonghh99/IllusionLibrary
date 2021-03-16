@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigation = findViewById(R.id.bottomNavigation);
         toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Your Profile");
         setSupportActionBar(toolbar);
         setUpBottomBar();
     }
@@ -78,9 +79,11 @@ public class MainActivity extends AppCompatActivity {
                         switch (item.getItemId()) {
                             case R.id.miProfile:
                                 fragment = profileFragment;
+                                toolbar.setTitle("Your Profile");
                                 break;
                             case R.id.miLibrary:
                                 fragment = libraryFragment;
+                                toolbar.setTitle("Image Library");
                                 break;
                             default:
                                 break;
