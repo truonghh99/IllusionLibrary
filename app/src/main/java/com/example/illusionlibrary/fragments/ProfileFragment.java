@@ -70,7 +70,7 @@ public class ProfileFragment extends Fragment {
         etEyeCondition = fragmentProfileBinding.etEyeCondition;
         etDominantHand = fragmentProfileBinding.etDominantHand;
         etTrained = fragmentProfileBinding.etTrained;
-        btnSave =fragmentProfileBinding.btnSave;
+        btnSave = fragmentProfileBinding.btnSave;
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
