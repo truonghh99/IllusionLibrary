@@ -72,6 +72,7 @@ public class LibraryFragment extends Fragment {
         DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference();
         for (int i = images.size() + 1; i <= numImages; ++i) {
+            final String id = Integer.toString(i);
             mDatabase.child("image").child(String.valueOf(i)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                 @Override
                 public synchronized void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -80,7 +81,7 @@ public class LibraryFragment extends Fragment {
                     } else {
                         Log.d("firebase", String.valueOf(task.getResult().getValue()));
                         Map<String, String> td = (HashMap<String, String>) task.getResult().getValue();
-                        Image image = new Image(td.get("imageName"),td.get("imageLink"));
+                        Image image = new Image(id, td.get("imageName"),td.get("imageLink"));
                         images.add(image);
                         adapter.notifyDataSetChanged();
                         Log.e(TAG, String.valueOf(images.size()));

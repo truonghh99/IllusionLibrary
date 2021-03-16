@@ -44,6 +44,8 @@ public class Response {
 
     public void saveToDatabase() {
         DatabaseReference responseRef = ref.child("response").push();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        uid = user.getUid();
         responseRef.setValue(this);
     }
 }

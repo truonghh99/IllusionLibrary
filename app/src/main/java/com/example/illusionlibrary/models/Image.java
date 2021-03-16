@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Image {
+    public String imageId;
     public String imageName;
     public String imageLink;
 
@@ -24,7 +25,8 @@ public class Image {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public Image(String name, String link) {
+    public Image(String id, String name, String link) {
+        this.imageId = id;
         this.imageName = name;
         this.imageLink = link;
     }

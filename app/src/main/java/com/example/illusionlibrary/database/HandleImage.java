@@ -18,7 +18,7 @@ public class HandleImage {
     private static DatabaseReference mDatabase;
 
     public static void writeNewImage(String id, String name, String link) {
-        Image image = new Image(name, link);
+        Image image = new Image(id, name, link);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("image").child(id).setValue(image);
     }
