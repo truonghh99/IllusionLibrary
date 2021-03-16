@@ -30,10 +30,33 @@
             android:layout_below="@id/ivImage"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:text="Chicken Noodles"
-            android:textSize="18sp"
+            android:text="Chicken or duck?"
+            android:textSize="22sp"
             android:textStyle="bold"
             android:gravity="center_horizontal" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_below="@id/tvName"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/rlResponse">
+
+            <EditText
+                android:id="@+id/etResponse"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="What do you see first?"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnSubmit"
+                android:background="@color/colorAccent"
+                android:text="Submit"
+                android:layout_toRightOf="@id/etResponse"/>
+        </RelativeLayout>
 
     </RelativeLayout>
 
