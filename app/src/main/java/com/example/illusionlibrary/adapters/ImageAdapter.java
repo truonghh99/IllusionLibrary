@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -91,6 +92,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
                     response.setContent(etResponse.getText().toString());
                     response.setImageId(image.imageId);
                     response.saveToDatabase();
+                    etResponse.getText().clear();
+                    Toast.makeText(context, "Submitted!", Toast.LENGTH_SHORT).show();
                 }
             });
         }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.illusionlibrary.R;
 import com.example.illusionlibrary.databinding.FragmentProfileBinding;
@@ -86,6 +87,7 @@ public class ProfileFragment extends Fragment {
                 currUser.setTrained(Integer.parseInt(etTrained.getText().toString()));
 
                 currUser.saveToDatabase();
+                Toast.makeText(getContext(), "Your inforamtion has been updated!", Toast.LENGTH_SHORT).show();
             }
         });
         return fragmentProfileBinding.getRoot();
