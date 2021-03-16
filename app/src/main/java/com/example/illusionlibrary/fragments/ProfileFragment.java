@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.illusionlibrary.R;
+import com.example.illusionlibrary.models.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +37,8 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        User user = new User();
+        user.saveToDatabase();
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 }
