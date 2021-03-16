@@ -254,31 +254,40 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/rlTrain"
+                    android:id="@+id/rlTrained"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/rlDominantHand"
                     android:layout_marginTop="30dp">
 
                     <TextView
-                        android:id="@+id/tvTrain"
+                        android:id="@+id/tvTrained"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rate your experience with art"
+                        android:text="Rate your experience with art: "
                         android:textSize="18sp" />
 
                     <EditText
-                        android:id="@+id/etTrain"
+                        android:id="@+id/etTrained"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@id/tvTrain"
-                        android:layout_toRightOf="@id/tvTrain"
+                        android:layout_alignBaseline="@id/tvTrained"
+                        android:layout_toRightOf="@id/tvTrained"
                         android:hint="0-10"/>
 
                 </RelativeLayout>
 
-            </RelativeLayout>
+                <Button
+                    android:id="@+id/btnSave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rlTrained"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/colorPrimary"
+                    android:text="Save" />
 
+            </RelativeLayout>
 
         </LinearLayout>
 
