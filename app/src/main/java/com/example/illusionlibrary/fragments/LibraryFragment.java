@@ -29,17 +29,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link LibraryFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class LibraryFragment extends Fragment {
 
     private static final String TAG = "LibraryFragment";
     private List<Image> images = new ArrayList<>();
     private RecyclerView rvLibrary;
     private ImageAdapter adapter;
+
     public LibraryFragment() {
     }
 
