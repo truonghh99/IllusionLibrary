@@ -24,7 +24,7 @@ public class User {
     private String ethnicity;
     private String nationality;
     private int eyesight;
-    private List<String> eyeCondition;
+    private String eyeCondition;
     private String dominantHand;
     private int trained;
 
@@ -104,11 +104,11 @@ public class User {
         this.eyesight = eyesight;
     }
 
-    public List<String> getEyeCondition() {
+    public String getEyeCondition() {
         return eyeCondition;
     }
 
-    public void setEyeCondition(List<String> eyeCondition) {
+    public void setEyeCondition(String eyeCondition) {
         this.eyeCondition = eyeCondition;
     }
 

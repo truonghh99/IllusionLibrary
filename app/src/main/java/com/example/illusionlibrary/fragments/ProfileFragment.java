@@ -79,8 +79,9 @@ public class ProfileFragment extends Fragment {
                 currUser.setOccupation(etOccupation.getText().toString());
                 currUser.setGender(etGender.getText().toString());
                 currUser.setEthnicity(etEthnicity.getText().toString());
+                currUser.setNationality(etNationality.getText().toString());
                 currUser.setEyesight(Integer.parseInt(etEyesight.getText().toString()));
-                currUser.setEyeCondition(convertCondition(etEyeCondition.getText().toString()));
+                currUser.setEyeCondition(etEyeCondition.getText().toString());
                 currUser.setDominantHand(etDominantHand.getText().toString());
                 currUser.setTrained(Integer.parseInt(etTrained.getText().toString()));
 
@@ -88,11 +89,6 @@ public class ProfileFragment extends Fragment {
             }
         });
         return fragmentProfileBinding.getRoot();
-    }
-
-    private List<String> convertCondition(String input) {
-        List<String> conditions = new ArrayList<String>(Arrays.asList(input.split(",")));
-        return conditions;
     }
 
     private int convertAge(String dob) {
