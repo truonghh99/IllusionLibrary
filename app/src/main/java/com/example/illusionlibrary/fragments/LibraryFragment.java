@@ -66,7 +66,7 @@ public class LibraryFragment extends Fragment {
     }
 
     public void getAllImages() {
-        final int numImages = 2;
+        final int numImages = 8;
         if (images.size() == numImages) return;
 
         DatabaseReference mDatabase;
