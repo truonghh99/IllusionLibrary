@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,11 @@ import android.widget.Toast;
 import com.example.illusionlibrary.R;
 import com.example.illusionlibrary.databinding.FragmentProfileBinding;
 import com.example.illusionlibrary.models.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -72,6 +78,8 @@ public class ProfileFragment extends Fragment {
         etTrained = fragmentProfileBinding.etTrained;
         btnSave = fragmentProfileBinding.btnSave;
 
+        getInfo();
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,7 +95,7 @@ public class ProfileFragment extends Fragment {
                 currUser.setTrained(Integer.parseInt(etTrained.getText().toString()));
 
                 currUser.saveToDatabase();
-                Toast.makeText(getContext(), "Your inforamtion has been updated!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Your information has been updated!", Toast.LENGTH_SHORT).show();
             }
         });
         return fragmentProfileBinding.getRoot();
@@ -97,5 +105,34 @@ public class ProfileFragment extends Fragment {
         dob = dob.substring(6);
         int year = Integer.parseInt(dob);
         return 2021 - year;
+    }
+
+    public void getInfo() {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("server/saving-data/fireblog");
+        DatabaseReference usersRef = ref.child("users").child(currUser.getUid());
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                Log.e("HAHA", user.toString());
+                etName.setText(user.getName());
+                etDob.setText("06/09/1999");
+                etOccupation.setText(user.getOccupation());
+                etGender.setText(user.getGender());
+                etEthnicity.setText(user.getEthnicity());
+                etNationality.setText(user.getNationality());
+                etEyesight.setText(Integer.toString(user.getEyesight()));
+                etEyeCondition.setText(user.getEyeCondition());
+                etDominantHand.setText(user.getDominantHand());
+                etTrained.setText(Integer.toString(user.getTrained()));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+            }
+        };
+        usersRef.addValueEventListener(postListener);
     }
 }
