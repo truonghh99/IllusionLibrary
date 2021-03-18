@@ -22,7 +22,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.illusionlibrary.activities.MainActivity;
 import com.example.illusionlibrary.databinding.ItemImageBinding;
+import com.example.illusionlibrary.fragments.StatsFragment;
 import com.example.illusionlibrary.models.Image;
 import com.example.illusionlibrary.models.Response;
 
@@ -69,6 +71,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
         private ImageView ivImage;
         private EditText etResponse;
         private Button btnSubmit;
+        private CardView cvImage;
 
         public ViewHolder(@NonNull ItemImageBinding itemImageBinding) {
             super(itemImageBinding.getRoot());
@@ -76,6 +79,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
             ivImage = itemImageBinding.ivImage;
             etResponse =itemImageBinding.etResponse;
             btnSubmit = itemImageBinding.btnSubmit;
+            cvImage = itemImageBinding.cvImage;
         }
 
         public void bind(final Image image) {
@@ -94,6 +98,13 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
                     response.saveToDatabase();
                     etResponse.getText().clear();
                     Toast.makeText(context, "Submitted!", Toast.LENGTH_SHORT).show();
+                }
+            });
+            cvImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Fragment statsFragment = StatsFragment.newInstance(image);
+                    MainActivity.switchFragment(statsFragment);
                 }
             });
         }
