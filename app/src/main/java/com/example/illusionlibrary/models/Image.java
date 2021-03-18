@@ -1,5 +1,7 @@
 package com.example.illusionlibrary.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -16,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Image {
+public class Image implements Parcelable {
     public String imageId;
     public String imageName;
     public String imageLink;
@@ -33,5 +35,15 @@ public class Image {
 
     public String getImageName() {
         return imageName;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
     }
 }
