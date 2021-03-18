@@ -40,7 +40,6 @@ public class User {
     public User() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
-        // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
     public String getUid() {

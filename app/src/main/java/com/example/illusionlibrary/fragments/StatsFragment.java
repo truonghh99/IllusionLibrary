@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.illusionlibrary.R;
+import com.example.illusionlibrary.databinding.FragmentStatsBinding;
 import com.example.illusionlibrary.models.Image;
 
 /**
@@ -20,8 +22,9 @@ public class StatsFragment extends Fragment {
 
     private static final String IMAGE_KEY = "image";
 
-    // TODO: Rename and change types of parameters
     private Image image;
+    private TextView tvTitle;
+    private FragmentStatsBinding fragmentStatsBinding;
 
     public StatsFragment() {
         // Required empty public constructor
@@ -47,6 +50,9 @@ public class StatsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_stats, container, false);
+        fragmentStatsBinding = FragmentStatsBinding.inflate(getLayoutInflater());
+        tvTitle = fragmentStatsBinding.tvTitle;
+        tvTitle.setText(image.getImageName());
+        return fragmentStatsBinding.getRoot();
     }
 }
