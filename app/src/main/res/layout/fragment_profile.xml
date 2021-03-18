@@ -201,7 +201,7 @@
                         android:id="@+id/tvEyeCondition"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Eye condition, separate by ',' :"
+                        android:text="Eye conditions, separate by ',' :"
                         android:textSize="18sp" />
 
                     <EditText
