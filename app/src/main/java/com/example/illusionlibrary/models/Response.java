@@ -14,6 +14,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Response {
 
+    private static final String TAG = "Response";
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref = database.getReference("server/saving-data/fireblog");
 
@@ -143,7 +144,7 @@ public class Response {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                Log.e("HAHA", user.toString());
+                Log.e(TAG, user.toString());
                 age = user.getAge();
                 occupation = user.getOccupation();
                 gender = user.getGender();
@@ -153,7 +154,7 @@ public class Response {
                 eyeCondition = user.getEyeCondition();
                 dominantHand = user.getDominantHand();
                 trained = user.getTrained();
-                DatabaseReference responseRef = ref.child("responses");
+                DatabaseReference responseRef = ref.child("responses").push();
                 Response response = new Response(imageId, content, age, occupation, gender, ethnicity, nationality,
                                                     eyesight, eyeCondition, dominantHand, trained);
                 responseRef.setValue(response);
