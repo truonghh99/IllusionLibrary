@@ -10,9 +10,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.illusionlibrary.R;
-import com.example.illusionlibrary.charts.PieChart;
+import com.example.illusionlibrary.charts.Drawing;
 import com.example.illusionlibrary.databinding.FragmentStatsBinding;
 import com.example.illusionlibrary.models.Image;
+import com.github.mikephil.charting.charts.PieChart;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +27,7 @@ public class StatsFragment extends Fragment {
     private Image image;
     private TextView tvTitle;
     private FragmentStatsBinding fragmentStatsBinding;
+    private PieChart pcTotal;
 
     public StatsFragment() {
         // Required empty public constructor
@@ -53,8 +55,9 @@ public class StatsFragment extends Fragment {
         // Inflate the layout for this fragment
         fragmentStatsBinding = FragmentStatsBinding.inflate(getLayoutInflater());
         tvTitle = fragmentStatsBinding.tvTitle;
+        pcTotal = fragmentStatsBinding.pcTotal;
         tvTitle.setText(image.getImageName());
-        PieChart.drawTotalStats(getContext(), image);
+        Drawing.drawTotalStats(pcTotal, getContext(), image);
         return fragmentStatsBinding.getRoot();
     }
 }
