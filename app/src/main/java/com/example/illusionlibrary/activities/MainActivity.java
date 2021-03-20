@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 import com.example.illusionlibrary.R;
 import com.example.illusionlibrary.databinding.ActivityMainBinding;
+import com.example.illusionlibrary.fragments.ComposeFragment;
 import com.example.illusionlibrary.fragments.LibraryFragment;
 import com.example.illusionlibrary.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     final Fragment libraryFragment = LibraryFragment.newInstance();
     final Fragment profileFragment = ProfileFragment.newInstance();
+    final Fragment composeFragment = ComposeFragment.newInstance();
+
 
     private Toolbar toolbar;
     private FirebaseAuth mAuth;
@@ -77,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         Fragment fragment = null;
                         switch (item.getItemId()) {
+                            case R.id.miCompose:
+                                fragment = composeFragment;
+                                toolbar.setTitle("Add new image");
+                                break;
                             case R.id.miProfile:
                                 fragment = profileFragment;
                                 toolbar.setTitle("Your Profile");
