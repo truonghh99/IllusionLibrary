@@ -5,13 +5,18 @@ import android.os.Parcelable;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.illusionlibrary.adapters.ImageAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,6 +38,24 @@ public class Image implements Parcelable {
         this.imageLink = link;
     }
 
+    protected Image(Parcel in) {
+        imageId = in.readString();
+        imageName = in.readString();
+        imageLink = in.readString();
+    }
+
+    public static final Creator<Image> CREATOR = new Creator<Image>() {
+        @Override
+        public Image createFromParcel(Parcel in) {
+            return new Image(in);
+        }
+
+        @Override
+        public Image[] newArray(int size) {
+            return new Image[size];
+        }
+    };
+
     public String getImageName() {
         return imageName;
     }
@@ -44,10 +67,41 @@ public class Image implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-
+        parcel.writeString(imageId);
+        parcel.writeString(imageName);
+        parcel.writeString(imageLink);
     }
 
-    public void getResponses() {
+    public List<Response> getResponses() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("server/saving-data/fireblog").child("responses");
+        Query query = ref;
+        final List<Response> responses = new ArrayList<Response>();
+        ChildEventListener responseListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Response response = snapshot.getValue(Response.class);
+                responses.add(response);
+            }
 
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Response response = snapshot.getValue(Response.class);
+                responses.add(response);
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        };
+        query.addChildEventListener(responseListener);
+        return responses;
     }
 }

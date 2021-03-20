@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.illusionlibrary.R;
+import com.example.illusionlibrary.charts.PieChart;
 import com.example.illusionlibrary.databinding.FragmentStatsBinding;
 import com.example.illusionlibrary.models.Image;
 
@@ -53,6 +54,7 @@ public class StatsFragment extends Fragment {
         fragmentStatsBinding = FragmentStatsBinding.inflate(getLayoutInflater());
         tvTitle = fragmentStatsBinding.tvTitle;
         tvTitle.setText(image.getImageName());
+        PieChart.drawTotalStats(getContext(), image);
         return fragmentStatsBinding.getRoot();
     }
 }
