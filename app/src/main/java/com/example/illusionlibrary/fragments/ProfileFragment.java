@@ -32,6 +32,7 @@ import java.util.List;
  */
 public class ProfileFragment extends Fragment {
 
+    private static final String TAG = "ProfileFragment";
     private FragmentProfileBinding fragmentProfileBinding;
     private User currUser = new User();
     private EditText etName;
@@ -115,7 +116,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                Log.e("HAHA", user.toString());
+                Log.e(TAG, user.toString());
                 etName.setText(user.getName());
                 etDob.setText("06/09/1999");
                 etOccupation.setText(user.getOccupation());
