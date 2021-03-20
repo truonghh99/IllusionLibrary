@@ -18,6 +18,7 @@ import com.example.illusionlibrary.R;
 import com.example.illusionlibrary.adapters.ImageAdapter;
 import com.example.illusionlibrary.databinding.FragmentLibraryBinding;
 import com.example.illusionlibrary.models.Image;
+import com.example.illusionlibrary.models.Response;
 import com.example.illusionlibrary.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -78,6 +79,8 @@ public class LibraryFragment extends Fragment {
                 Image image = snapshot.getValue(Image.class);
                 images.add(image);
                 adapter.notifyDataSetChanged();
+                Response.responses.put(image.imageId, new ArrayList<Response>());
+                image.getAllResponses();
             }
 
             @Override

@@ -12,9 +12,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class Response {
 
     private static final String TAG = "Response";
+    public static HashMap<String, List<Response>> responses = new HashMap<>();
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref = database.getReference("server/saving-data/fireblog");
 
@@ -44,96 +49,8 @@ public class Response {
         this.trained = trained;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getOccupation() {
-        return occupation;
-    }
-
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getEthnicity() {
-        return ethnicity;
-    }
-
-    public void setEthnicity(String ethnicity) {
-        this.ethnicity = ethnicity;
-    }
-
-    public String getNationality() {
-        return nationality;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
-    public int getEyesight() {
-        return eyesight;
-    }
-
-    public void setEyesight(int eyesight) {
-        this.eyesight = eyesight;
-    }
-
-    public String getEyeCondition() {
-        return eyeCondition;
-    }
-
-    public void setEyeCondition(String eyeCondition) {
-        this.eyeCondition = eyeCondition;
-    }
-
-    public String getDominantHand() {
-        return dominantHand;
-    }
-
-    public void setDominantHand(String dominantHand) {
-        this.dominantHand = dominantHand;
-    }
-
-    public int getTrained() {
-        return trained;
-    }
-
-    public void setTrained(int trained) {
-        this.trained = trained;
-    }
-
     public Response() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
-    }
-
-    public String getImageId() {
-        return imageId;
-    }
-
-    public void setImageId(String imageId) {
-        this.imageId = imageId;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public void saveToDatabase(final String imageId, final String content) {

@@ -72,4 +72,35 @@ public class Image implements Parcelable {
         parcel.writeString(imageName);
         parcel.writeString(imageLink);
     }
+
+    public void getAllResponses() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("server/saving-data/fireblog").child("responses");
+        Query query = ref.orderByChild("imageId").equalTo(imageId);
+        ChildEventListener responseListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Response response = snapshot.getValue(Response.class);
+                Response.responses.get(imageId).add(response);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Response response = snapshot.getValue(Response.class);
+                Response.responses.get(imageId).add(response);
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        };
+        query.addChildEventListener(responseListener);
+    }
 }
