@@ -3,6 +3,7 @@ package com.example.illusionlibrary.fragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +21,7 @@ import com.example.illusionlibrary.models.Image;
 import com.example.illusionlibrary.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -58,7 +60,7 @@ public class LibraryFragment extends Fragment {
 
         FragmentLibraryBinding fragmentLibraryBinding = FragmentLibraryBinding.inflate(getLayoutInflater());
 
-        getAllImages();
+        if (images.size() == 0) getAllImages();
         // Set up adapter & recycler view
         rvLibrary = fragmentLibraryBinding.rvLibrary;
         adapter = new ImageAdapter(getActivity(), images);
@@ -69,23 +71,32 @@ public class LibraryFragment extends Fragment {
     }
 
     public void getAllImages() {
-        for (int i = 1; i <= size; ++i) {
-            String id = Integer.toString(i);
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("image").child(id);
-            ValueEventListener imageListener = new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    Image image = dataSnapshot.getValue(Image.class);
-                    images.add(image);
-                    adapter.notifyDataSetChanged();
-                }
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("image");
+        ChildEventListener imageListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Image image = snapshot.getValue(Image.class);
+                images.add(image);
+                adapter.notifyDataSetChanged();
+            }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    // Getting Post failed, log a message
-                }
-            };
-            ref.addValueEventListener(imageListener);
-        }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        ref.addChildEventListener(imageListener);
     }
 }
