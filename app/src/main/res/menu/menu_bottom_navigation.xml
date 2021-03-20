@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/miCompose"
+        android:enabled="true"
+        android:icon="@drawable/ic_compose"
+        android:title="Library"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/miLibrary"
         android:enabled="true"
         android:icon="@drawable/ic_collection"
