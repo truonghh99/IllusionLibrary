@@ -37,6 +37,7 @@ public class LibraryFragment extends Fragment {
     private List<Image> images = new ArrayList<>();
     private RecyclerView rvLibrary;
     private ImageAdapter adapter;
+    private int size = 8;
 
     public LibraryFragment() {
     }
@@ -68,28 +69,23 @@ public class LibraryFragment extends Fragment {
     }
 
     public void getAllImages() {
-        final int numImages = 8;
-        if (images.size() == numImages) return;
-
-        DatabaseReference mDatabase;
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        for (int i = images.size() + 1; i <= numImages; ++i) {
-            final String id = Integer.toString(i);
-            mDatabase.child("image").child(String.valueOf(i)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        for (int i = 1; i <= size; ++i) {
+            String id = Integer.toString(i);
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("image").child(id);
+            ValueEventListener imageListener = new ValueEventListener() {
                 @Override
-                public synchronized void onComplete(@NonNull Task<DataSnapshot> task) {
-                    if (!task.isSuccessful()) {
-                        Log.e("firebase", "Error getting data", task.getException());
-                    } else {
-                        Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                        Map<String, String> td = (HashMap<String, String>) task.getResult().getValue();
-                        Image image = new Image(id, td.get("imageName"),td.get("imageLink"));
-                        images.add(image);
-                        adapter.notifyDataSetChanged();
-                        Log.e(TAG, String.valueOf(images.size()));
-                    }
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Image image = dataSnapshot.getValue(Image.class);
+                    images.add(image);
+                    adapter.notifyDataSetChanged();
                 }
-            });
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Getting Post failed, log a message
+                }
+            };
+            ref.addValueEventListener(imageListener);
         }
     }
 }

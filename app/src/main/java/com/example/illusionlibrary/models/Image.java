@@ -46,4 +46,8 @@ public class Image implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
 
     }
+
+    public void getResponses() {
+
+    }
 }
