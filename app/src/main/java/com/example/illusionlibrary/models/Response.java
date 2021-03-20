@@ -136,7 +136,7 @@ public class Response {
         this.content = content;
     }
 
-    public void saveToDatabase() {
+    public void saveToDatabase(final String imageId, final String content) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference usersRef = ref.child("users").child(user.getUid());
 

@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Image implements Parcelable {
+    private static final String TAG = "Image";
     public String imageId;
     public String imageName;
     public String imageLink;
@@ -70,38 +71,5 @@ public class Image implements Parcelable {
         parcel.writeString(imageId);
         parcel.writeString(imageName);
         parcel.writeString(imageLink);
-    }
-
-    public List<Response> getResponses() {
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("server/saving-data/fireblog").child("responses");
-        Query query = ref;
-        final List<Response> responses = new ArrayList<Response>();
-        ChildEventListener responseListener = new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Response response = snapshot.getValue(Response.class);
-                responses.add(response);
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                Response response = snapshot.getValue(Response.class);
-                responses.add(response);
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        };
-        query.addChildEventListener(responseListener);
-        return responses;
     }
 }

@@ -93,9 +93,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
                 @Override
                 public void onClick(View view) {
                     Response response = new Response();
-                    response.setContent(etResponse.getText().toString());
-                    response.setImageId(image.imageId);
-                    response.saveToDatabase();
+                    response.saveToDatabase(image.imageId, etResponse.getText().toString());
                     etResponse.getText().clear();
                     Toast.makeText(context, "Submitted!", Toast.LENGTH_SHORT).show();
                 }
