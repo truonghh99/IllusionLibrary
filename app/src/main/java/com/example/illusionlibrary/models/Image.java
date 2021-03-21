@@ -57,6 +57,13 @@ public class Image implements Parcelable {
         }
     };
 
+    public static void saveNewImage(String link, String question) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("image").push();
+        String id = ref.getKey();
+        Image image = new Image(id, link, question);
+        ref.setValue(image);
+    }
+
     public String getImageName() {
         return imageName;
     }

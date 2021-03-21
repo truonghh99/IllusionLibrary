@@ -2,83 +2,97 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="100dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".fragments.ComposeFragment">
 
-    <ImageView
-        android:id="@+id/ivPreview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true" />
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/rlLink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ivPreview"
-        android:layout_marginTop="30dp">
-
-        <TextView
-            android:id="@+id/tvLink"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Image link: "
-            android:textSize="18sp" />
+            android:layout_margin="30dp"
+            android:layout_marginBottom="300dp"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etLink"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/tvLink"
-            android:layout_toRightOf="@id/tvLink"
-            android:hint="Drop your link here"/>
+            <ImageView
+                android:id="@+id/ivPreview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true" />
 
-    </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rlLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ivPreview"
+                android:layout_marginTop="30dp">
 
-    <Button
-        android:id="@+id/btnPreview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/rlLink"
-        android:background="@color/colorAccent"
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true"
-        android:text="Preview" />
+                <TextView
+                    android:id="@+id/tvLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Image link: "
+                    android:textSize="18sp" />
 
-    <RelativeLayout
-        android:id="@+id/rlQuestion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnPreview"
-        android:layout_marginTop="30dp">
+                <EditText
+                    android:id="@+id/etLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/tvLink"
+                    android:layout_toRightOf="@id/tvLink"
+                    android:hint="Drop your link here"/>
 
-        <TextView
-            android:id="@+id/tvQuestion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Question: "
-            android:textSize="18sp" />
+            </RelativeLayout>
 
-        <EditText
-            android:id="@+id/etQuestion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/tvQuestion"
-            android:layout_toRightOf="@id/tvQuestion"
-            android:hint="Question on your image"/>
+            <Button
+                android:id="@+id/btnPreview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlLink"
+                android:background="@color/colorAccent"
+                android:layout_marginTop="30dp"
+                android:layout_centerHorizontal="true"
+                android:text="Preview" />
 
-    </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rlQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnPreview"
+                android:layout_marginTop="30dp">
 
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/rlQuestion"
-        android:background="@color/colorPrimary"
-        android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true"
-        android:text="Submit" />
+                <TextView
+                    android:id="@+id/tvQuestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Question: "
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/etQuestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/tvQuestion"
+                    android:layout_toRightOf="@id/tvQuestion"
+                    android:hint="Question on your image"/>
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlQuestion"
+                android:background="@color/colorPrimary"
+                android:layout_marginTop="30dp"
+                android:layout_centerHorizontal="true"
+                android:text="Submit" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
